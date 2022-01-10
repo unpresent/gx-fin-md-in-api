@@ -11,8 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.gx.core.data.AbstractDataObject;
 import ru.gx.fin.common.dris.out.DealDirection;
-import ru.gx.fin.core.fics.out.AbstractInstrument;
-import ru.gx.fin.core.fics.out.Currency;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
