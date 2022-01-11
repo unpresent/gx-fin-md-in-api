@@ -46,7 +46,7 @@ public class CommonAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     @ConditionalOnProperty(value = "service.channels-api." + MdChannelNames.Streams.ORDERS_V1 + DOT_ENABLED, havingValue = "true")
-    public MdOrderKeyExtractor securityKeyExtractor() {
+    public MdOrderKeyExtractor mdOrderKeyExtractor() {
         return new MdOrderKeyExtractor();
     }
 
@@ -61,7 +61,7 @@ public class CommonAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     @ConditionalOnProperty(value = "service.channels-api." + MdChannelNames.Streams.DEALS_V1 + DOT_ENABLED, havingValue = "true")
-    public MdDealKeyExtractor derivativeKeyExtractor() {
+    public MdDealKeyExtractor mdDealKeyExtractor() {
         return new MdDealKeyExtractor();
     }
 }

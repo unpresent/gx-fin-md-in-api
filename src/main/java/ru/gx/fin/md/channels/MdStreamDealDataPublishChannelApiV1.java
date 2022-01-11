@@ -13,11 +13,11 @@ public class MdStreamDealDataPublishChannelApiV1
 
     public MdStreamDealDataPublishChannelApiV1() {
         super(
-                MdChannelNames.Streams.TRADES_V1,
+                MdChannelNames.Streams.DEALS_V1,
                 SerializeMode.JsonString,
                 MdStreamDealDataPublish.class,
                 MessageKind.DataPublish,
-                MdMessageTypes.Streams.TRADES,
+                MdMessageTypes.Streams.DEALS,
                 MdStreamDealDataPublish.V1
         );
     }
