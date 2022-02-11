@@ -7,14 +7,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.gx.core.messaging.*;
 import ru.gx.fin.md.config.MdMessageTypes;
-import ru.gx.fin.md.dto.MdDeal;
+import ru.gx.fin.md.dto.MdErrorOrder;
 
 import java.util.Arrays;
 
 @SuppressWarnings("unused")
 @ToString(callSuper = true)
-public class MdStreamDealDataPublish
-        extends AbstractMessage<MdStreamDealDataPublish.MdStreamDealDataPublishBody> {
+public class MdStreamErrorOrderDataPublish
+        extends AbstractMessage<MdStreamErrorOrderDataPublish.MdStreamErrorOrderDataPublishBody> {
     public static final int V1 = 1;
     public static final int[] SUPPORTED_VERSIONS = {V1};
 
@@ -28,27 +28,27 @@ public class MdStreamDealDataPublish
         Arrays.stream(SUPPORTED_VERSIONS).forEach(version ->
                 MessageTypesRegistrator.registerType(
                         MessageKind.DataPublish,
-                        MdMessageTypes.Streams.DEALS,
+                        MdMessageTypes.Streams.ERROR_ORDERS,
                         version,
-                        MdStreamDealDataPublish.class,
-                        MdStreamDealDataPublishBody.class
+                        MdStreamErrorOrderDataPublish.class,
+                        MdStreamErrorOrderDataPublishBody.class
                 )
         );
     }
 
     @JsonCreator
-    public MdStreamDealDataPublish(
+    public MdStreamErrorOrderDataPublish(
             @JsonProperty("header") @NotNull final StandardMessageHeader header,
-            @JsonProperty("body") @NotNull final MdStreamDealDataPublish.MdStreamDealDataPublishBody body,
+            @JsonProperty("body") @NotNull final MdStreamErrorOrderDataPublish.MdStreamErrorOrderDataPublishBody body,
             @JsonProperty("correlation") final @Nullable MessageCorrelation correlation
     ) {
         super(header, body, correlation);
     }
 
-    public static class MdStreamDealDataPublishBody extends AbstractMessageBodyDataObject<MdDeal> {
+    public static class MdStreamErrorOrderDataPublishBody extends AbstractMessageBodyDataObject<MdErrorOrder> {
         @JsonCreator
-        public MdStreamDealDataPublishBody(
-                @JsonProperty("dataObject") @NotNull final MdDeal dataObject
+        public MdStreamErrorOrderDataPublishBody(
+                @JsonProperty("dataObject") @NotNull final MdErrorOrder dataObject
         ) {
             super(dataObject);
         }

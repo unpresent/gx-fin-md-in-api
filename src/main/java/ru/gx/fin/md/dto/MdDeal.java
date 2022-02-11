@@ -1,7 +1,9 @@
 package ru.gx.fin.md.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -141,25 +143,26 @@ public class MdDeal extends AbstractDataObject {
      */
     private final int openInterest;
 
+    @JsonCreator
     public MdDeal(
-            @NotNull final String placeCode,
-            @NotNull final String tradeNum,
-            @NotNull final String orderNum,
-            @Nullable final DealDirection direction,
-            @NotNull final LocalDateTime tradeDateTime,
-            @NotNull final UUID instrumentGuid,
-            @NotNull final String currencyCodeAlpha3,
-            @Nullable final BigDecimal price,
-            @Nullable final BigDecimal quantity,
-            @Nullable final BigDecimal value,
-            @Nullable final BigDecimal accruedInterest,
-            @Nullable final BigDecimal yield,
-            @Nullable final BigDecimal repoRate,
-            @Nullable final BigDecimal repoValue,
-            @Nullable final BigDecimal repo2Value,
-            final int repoTerm,
-            final short period,
-            final int openInterest
+            @JsonProperty("placeCode") @NotNull final String placeCode,
+            @JsonProperty("tradeNum") @NotNull final String tradeNum,
+            @JsonProperty("orderNum") @NotNull final String orderNum,
+            @JsonProperty("direction") @Nullable final DealDirection direction,
+            @JsonProperty("tradeDateTime") @NotNull final LocalDateTime tradeDateTime,
+            @JsonProperty("instrumentGuid") @NotNull final UUID instrumentGuid,
+            @JsonProperty("currencyCodeAlpha3") @NotNull final String currencyCodeAlpha3,
+            @JsonProperty("price") @Nullable final BigDecimal price,
+            @JsonProperty("quantity") @Nullable final BigDecimal quantity,
+            @JsonProperty("value") @Nullable final BigDecimal value,
+            @JsonProperty("accruedInterest") @Nullable final BigDecimal accruedInterest,
+            @JsonProperty("yield") @Nullable final BigDecimal yield,
+            @JsonProperty("repoRate") @Nullable final BigDecimal repoRate,
+            @JsonProperty("repoValue") @Nullable final BigDecimal repoValue,
+            @JsonProperty("repo2Value") @Nullable final BigDecimal repo2Value,
+            @JsonProperty("repoTerm") final int repoTerm,
+            @JsonProperty("period") final short period,
+            @JsonProperty("openInterest") final int openInterest
     ) {
         super();
         this.placeCode = placeCode;

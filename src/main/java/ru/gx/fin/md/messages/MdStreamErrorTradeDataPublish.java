@@ -7,14 +7,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.gx.core.messaging.*;
 import ru.gx.fin.md.config.MdMessageTypes;
-import ru.gx.fin.md.dto.MdDeal;
+import ru.gx.fin.md.dto.MdErrorTrade;
 
 import java.util.Arrays;
 
 @SuppressWarnings("unused")
 @ToString(callSuper = true)
-public class MdStreamDealDataPublish
-        extends AbstractMessage<MdStreamDealDataPublish.MdStreamDealDataPublishBody> {
+public class MdStreamErrorTradeDataPublish
+        extends AbstractMessage<MdStreamErrorTradeDataPublish.MdStreamErrorTradeDataPublishBody> {
     public static final int V1 = 1;
     public static final int[] SUPPORTED_VERSIONS = {V1};
 
@@ -28,27 +28,27 @@ public class MdStreamDealDataPublish
         Arrays.stream(SUPPORTED_VERSIONS).forEach(version ->
                 MessageTypesRegistrator.registerType(
                         MessageKind.DataPublish,
-                        MdMessageTypes.Streams.DEALS,
+                        MdMessageTypes.Streams.ERROR_TRADES,
                         version,
-                        MdStreamDealDataPublish.class,
-                        MdStreamDealDataPublishBody.class
+                        MdStreamErrorTradeDataPublish.class,
+                        MdStreamErrorTradeDataPublishBody.class
                 )
         );
     }
 
     @JsonCreator
-    public MdStreamDealDataPublish(
+    public MdStreamErrorTradeDataPublish(
             @JsonProperty("header") @NotNull final StandardMessageHeader header,
-            @JsonProperty("body") @NotNull final MdStreamDealDataPublish.MdStreamDealDataPublishBody body,
+            @JsonProperty("body") @NotNull final MdStreamErrorTradeDataPublish.MdStreamErrorTradeDataPublishBody body,
             @JsonProperty("correlation") final @Nullable MessageCorrelation correlation
     ) {
         super(header, body, correlation);
     }
 
-    public static class MdStreamDealDataPublishBody extends AbstractMessageBodyDataObject<MdDeal> {
+    public static class MdStreamErrorTradeDataPublishBody extends AbstractMessageBodyDataObject<MdErrorTrade> {
         @JsonCreator
-        public MdStreamDealDataPublishBody(
-                @JsonProperty("dataObject") @NotNull final MdDeal dataObject
+        public MdStreamErrorTradeDataPublishBody(
+                @JsonProperty("dataObject") @NotNull final MdErrorTrade dataObject
         ) {
             super(dataObject);
         }
