@@ -13,7 +13,7 @@ public class MdStreamErrorDealDataPublishChannelApiV1
 
     public MdStreamErrorDealDataPublishChannelApiV1() {
         super(
-                MdChannelNames.Streams.DEALS_V1,
+                MdChannelNames.Streams.ERROR_DEALS_V1,
                 SerializeMode.JsonString,
                 MdStreamErrorDealDataPublish.class,
                 MessageKind.DataPublish,

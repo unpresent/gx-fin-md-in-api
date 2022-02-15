@@ -138,11 +138,6 @@ public class MdDeal extends AbstractDataObject {
      */
     private final short period;
 
-    /**
-     * Открытый интерес
-     */
-    private final int openInterest;
-
     @JsonCreator
     public MdDeal(
             @JsonProperty("placeCode") @NotNull final String placeCode,
@@ -161,8 +156,7 @@ public class MdDeal extends AbstractDataObject {
             @JsonProperty("repoValue") @Nullable final BigDecimal repoValue,
             @JsonProperty("repo2Value") @Nullable final BigDecimal repo2Value,
             @JsonProperty("repoTerm") final int repoTerm,
-            @JsonProperty("period") final short period,
-            @JsonProperty("openInterest") final int openInterest
+            @JsonProperty("period") final short period
     ) {
         super();
         this.placeCode = placeCode;
@@ -182,7 +176,6 @@ public class MdDeal extends AbstractDataObject {
         this.repo2Value = repo2Value;
         this.repoTerm = repoTerm;
         this.period = period;
-        this.openInterest = openInterest;
         // Устанавливаем this.id!
         this.id = calcId();
     }

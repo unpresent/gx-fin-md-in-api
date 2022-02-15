@@ -102,12 +102,6 @@ public class MdOrder extends AbstractDataObject {
     private final BigDecimal yield;
 
     /**
-     * Ставка РЕПО (%)
-     */
-    @Nullable
-    private final BigDecimal repoRate;
-
-    /**
      * Сумма РЕПО
      */
     @Nullable
@@ -124,19 +118,6 @@ public class MdOrder extends AbstractDataObject {
      */
     private final int repoTerm;
 
-    /**
-     * Период торговой сессии. Возможные значения:
-     * «0» – Открытие;
-     * «1» – Нормальный;
-     * «2» – Закрытие
-     */
-    private final short period;
-
-    /**
-     * Открытый интерес
-     */
-    private final int openInterest;
-
     @JsonCreator
     public MdOrder(
             @JsonProperty("placeCode") @NotNull final String placeCode,
@@ -150,12 +131,9 @@ public class MdOrder extends AbstractDataObject {
             @JsonProperty("value") @Nullable final BigDecimal value,
             @JsonProperty("accruedInterest") @Nullable final BigDecimal accruedInterest,
             @JsonProperty("yield") @Nullable final BigDecimal yield,
-            @JsonProperty("repoRate") @Nullable final BigDecimal repoRate,
             @JsonProperty("repoValue") @Nullable final BigDecimal repoValue,
             @JsonProperty("repo2Value") @Nullable final BigDecimal repo2Value,
-            @JsonProperty("repoTerm") final int repoTerm,
-            @JsonProperty("period") final short period,
-            @JsonProperty("openInterest") final int openInterest
+            @JsonProperty("repoTerm") final int repoTerm
     ) {
         super();
         this.placeCode = placeCode;
@@ -169,12 +147,9 @@ public class MdOrder extends AbstractDataObject {
         this.value = value;
         this.accruedInterest = accruedInterest;
         this.yield = yield;
-        this.repoRate = repoRate;
         this.repoValue = repoValue;
         this.repo2Value = repo2Value;
         this.repoTerm = repoTerm;
-        this.period = period;
-        this.openInterest = openInterest;
         // Устанавливаем this.id!
         this.id = calcId();
     }
