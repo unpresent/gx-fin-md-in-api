@@ -20,10 +20,19 @@ public class ConfigurationPropertiesServiceChannelsApi {
         public Enabled mdTradesV1;
 
         @NestedConfigurationProperty
+        public Enabled mdErrorTradesV1;
+
+        @NestedConfigurationProperty
         public Enabled mdOrdersV1;
 
         @NestedConfigurationProperty
+        public Enabled mdErrorOrdersV1;
+
+        @NestedConfigurationProperty
         public Enabled mdDealsV1;
+
+        @NestedConfigurationProperty
+        public Enabled mdErrorDealsV1;
     }
 
     @Getter
